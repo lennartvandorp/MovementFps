@@ -10,4 +10,6 @@ public class InputSetup
     public KeyCode right = KeyCode.D;
     public KeyCode left = KeyCode.A;
     public KeyCode jump = KeyCode.Space;
+    public KeyCode useHandHeld = KeyCode.Mouse0;
+    public KeyCode grab = KeyCode.Mouse1;
 }

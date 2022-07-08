@@ -7,53 +7,78 @@ using UnityEngine;
 [RequireComponent(typeof(Movement))]
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] InputSetup setup;
+    [SerializeField] bool holdJumpOnLand;
 
     Movement movement;
     PlayerSenses senses;
     Jumping jumping;
+    HoldItem holdItem;
+    
 
     private void Start()
     {
         movement = GetComponent<Movement>();
         senses = GetComponent<PlayerSenses>();
         jumping = GetComponent<Jumping>();
+        holdItem = GetComponentInChildren<HoldItem>();
     }
 
     bool wasJumping;
+    bool wasUsing;
+    bool wasGrabbing;
     public void FixedUpdate()
     {
         movement.OnStartOfFrame();
-        if (Input.GetKey(setup.forward))
+        if (Input.GetKey(GameManager.Instance.setup.forward))
         {
             movement.ForwardInput();
         }
-        if (Input.GetKey(setup.left))
+        if (Input.GetKey(GameManager.Instance.setup.left))
         {
             movement.LeftInput();
         }
-        if (Input.GetKey(setup.right))
+        if (Input.GetKey(GameManager.Instance.setup.right))
         {
             movement.RightInput();
         }
-        if (Input.GetKey(setup.back))
+        if (Input.GetKey(GameManager.Instance.setup.back))
         {
             movement.BackInput();
         }
-        if (Input.GetKey(setup.jump))
+        if (Input.GetKey(GameManager.Instance.setup.jump))
         {
             movement.Jump();
         }
-        if(/*!wasJumping &&*/ senses.HitGround() && Input.GetKey(setup.jump))
+        if((!wasJumping || holdJumpOnLand) && senses.HitGround() && Input.GetKey(GameManager.Instance.setup.jump))
         {
             wasJumping = true;
-            jumping.OnJump(setup.jump);
+            jumping.OnJump(GameManager.Instance.setup.jump);
         }
-        if (!Input.GetKey(setup.jump))
+        if (!Input.GetKey(GameManager.Instance.setup.jump))
         {
             wasJumping = false;
         }
-        
+
+        if (!wasUsing && Input.GetKey(GameManager.Instance.setup.useHandHeld))
+        {
+            wasUsing = true;
+            //Todo add the logic for using a held item;
+        }
+        if (!Input.GetKey(GameManager.Instance.setup.useHandHeld))
+        {
+            wasUsing = false;
+        }
+
+        if (!wasGrabbing && Input.GetKey(GameManager.Instance.setup.grab))
+        {
+            wasGrabbing = true;
+            holdItem.Grab();
+        }
+        if (!Input.GetKey(GameManager.Instance.setup.grab))
+        {
+            wasGrabbing = false;
+        }
+
 
         movement.OnEndOfFrame();
     }
