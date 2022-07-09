@@ -29,4 +29,15 @@ public class HoldableItem : MonoBehaviour
         rb.isKinematic = false;
         collider.enabled = true;
     }
+
+    public virtual void GetThrown(Vector3 inheritedVel ,Vector3 force)
+    {
+        rb.velocity = inheritedVel;
+        rb.AddForce(force);
+    }
+
+    public virtual void Use()
+    {
+
+    }
 }

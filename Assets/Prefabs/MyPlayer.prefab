@@ -811,14 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7028517fa0ca4054490b2c872cceb5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setup:
-    forward: 119
-    back: 115
-    right: 100
-    left: 97
-    jump: 32
-    useHandHeld: 323
-    grab: 324
+  holdJumpOnLand: 1
 --- !u!114 &4509891502497123548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,7 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 002bbe7dcf8bfe74fa2f745c8d3166ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 10
+  jumpSpeed: 13
   extendedJumpForce: 1000
   extendedJumpDuration: 0
   fallExtraGravity: 0

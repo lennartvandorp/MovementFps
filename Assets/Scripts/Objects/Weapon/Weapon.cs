@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class Weapon : HoldableItem
 {
-    Transform cameraTrans;
+    public Transform cameraTrans;
 
     public override void Setup()
     {
         cameraTrans = transform.parent.transform;
         base.Setup();
-    }
-
-
-
-    public virtual void Attack()
-    {
-
     }
 
 }

@@ -62,7 +62,7 @@ public class PlayerInput : MonoBehaviour
         if (!wasUsing && Input.GetKey(GameManager.Instance.setup.useHandHeld))
         {
             wasUsing = true;
-            //Todo add the logic for using a held item;
+            holdItem.UseItem();
         }
         if (!Input.GetKey(GameManager.Instance.setup.useHandHeld))
         {

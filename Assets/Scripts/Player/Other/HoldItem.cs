@@ -5,8 +5,15 @@ using UnityEngine;
 public class HoldItem : MonoBehaviour
 {
     [SerializeField] float grabDist;
+    [SerializeField] float throwForce;
 
+    Rigidbody playerRb;
     HoldableItem heldItem;
+
+    private void Start()
+    {
+        playerRb = GetComponentInParent<Rigidbody>();
+    }
 
     public void Grab()
     {
@@ -18,8 +25,6 @@ public class HoldItem : MonoBehaviour
         {
             ThrowItem();
         }
-
-
     }
 
     /// <summary>
@@ -43,6 +48,15 @@ public class HoldItem : MonoBehaviour
     {
         heldItem.transform.parent = null;
         heldItem.OnDrop();
+        heldItem.GetThrown(playerRb.velocity, throwForce * transform.forward);
         heldItem = null;
+    }
+
+    public void UseItem()
+    {
+        if (heldItem)
+        {
+            heldItem.Use();
+        }
     }
 }
