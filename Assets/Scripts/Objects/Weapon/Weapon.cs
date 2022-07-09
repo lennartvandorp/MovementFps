@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : HoldableItem
 {
-    public Transform cameraTrans;
+    [HideInInspector] public Transform cameraTrans;
 
     public override void Setup()
     {
