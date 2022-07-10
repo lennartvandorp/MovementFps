@@ -6,6 +6,7 @@ public class HandGun : Weapon
 {
     [SerializeField] float shootForce;
     [SerializeField] GameObject impactParticles;
+    [SerializeField] ParticleSystem shootParticles;
     private Animator animator;
 
     public override void Setup()
@@ -42,6 +43,12 @@ public class HandGun : Weapon
             animator.SetTrigger("RevolverShootTrigger");
         }
         else { Debug.LogError("The Revolver should have an animator"); }
+
+        if (shootParticles)
+        {
+            shootParticles.Play();
+        }
+        else { Debug.LogWarning("There is no particle system for shooting the gun"); }
     }
 
 }
