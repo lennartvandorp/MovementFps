@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 4509891501546498873}
   - component: {fileID: 4509891501546498872}
   - component: {fileID: 4509891501546498879}
+  - component: {fileID: 3591960987985480760}
   m_Layer: 3
   m_Name: Camera holder
   m_TagString: Untagged
@@ -396,6 +397,20 @@ MonoBehaviour:
   hookPrefab: {fileID: 275016318890725670, guid: 805417ff273287347b5b6d47e57fb62b, type: 3}
   body: {fileID: 4509891501948381223}
   grappleLine: {fileID: 4509891501310452212}
+--- !u!114 &3591960987985480760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509891501546498874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f7e08081aaa594e917c3493f681936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabDist: 5
+  throwForce: 1000
 --- !u!1 &4509891501608381809
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,7 +487,6 @@ GameObject:
   - component: {fileID: 4509891501745670517}
   - component: {fileID: 4509891501745670522}
   - component: {fileID: 4509891501745670523}
-  - component: {fileID: 4509891501745670516}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -543,19 +557,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4509891501745670516
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4509891501745670518}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4509891501948381223
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb4a413cbdb54e4b8d7d55234bc9be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 2
+  acceleration: 2.5
   airAcc: 1.5
   movingFriction: 0.85
   stoppingFriction: 0.8
