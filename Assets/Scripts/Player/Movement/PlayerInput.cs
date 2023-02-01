@@ -1,24 +1,24 @@
+using EnemyAI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Jumping))]
-[RequireComponent(typeof(PlayerSenses))]
-[RequireComponent(typeof(Movement))]
+[RequireComponent(typeof(AgentSenses))]
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] bool holdJumpOnLand;
 
-    Movement movement;
-    PlayerSenses senses;
+    AgentGroundMovement movement;
+    AgentSenses senses;
     Jumping jumping;
     HoldItem holdItem;
     
 
     private void Start()
     {
-        movement = GetComponent<Movement>();
-        senses = GetComponent<PlayerSenses>();
+        movement = GetComponent<AgentGroundMovement>();
+        senses = GetComponent<AgentSenses>();
         jumping = GetComponent<Jumping>();
         holdItem = GetComponentInChildren<HoldItem>();
     }
@@ -28,26 +28,32 @@ public class PlayerInput : MonoBehaviour
     bool wasGrabbing;
     public void FixedUpdate()
     {
-        movement.OnStartOfFrame();
+
+        Vector3 direction = Vector3.zero;
+        //movement.OnStartOfFrame();
         if (Input.GetKey(GameManager.Instance.setup.forward))
         {
-            movement.ForwardInput();
+            //movement.ForwardInput();
+            direction += transform.forward;
         }
         if (Input.GetKey(GameManager.Instance.setup.left))
         {
-            movement.LeftInput();
+            //movement.LeftInput();
+            direction -= transform.right;
         }
         if (Input.GetKey(GameManager.Instance.setup.right))
         {
-            movement.RightInput();
+            //movement.RightInput();
+            direction += transform.right;
         }
         if (Input.GetKey(GameManager.Instance.setup.back))
         {
-            movement.BackInput();
+            //movement.BackInput();
+            direction -= transform.forward;
         }
         if (Input.GetKey(GameManager.Instance.setup.jump))
         {
-            movement.Jump();
+            //movement.Jump();
         }
         if((!wasJumping || holdJumpOnLand) && senses.HitGround() && Input.GetKey(GameManager.Instance.setup.jump))
         {
@@ -79,7 +85,9 @@ public class PlayerInput : MonoBehaviour
             wasGrabbing = false;
         }
 
+        movement.SetDirection(direction.normalized);
 
-        movement.OnEndOfFrame();
+
+        //movement.OnEndOfFrame();
     }
 }

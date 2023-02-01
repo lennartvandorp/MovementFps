@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2040872283649577128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5246556761318582503}
+  m_Layer: 3
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5246556761318582503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040872283649577128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2248970053546194696}
+  m_Father: {fileID: 6973866118515450109}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4440164887428214715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2248970053546194696}
+  m_Layer: 3
+  m_Name: Foot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2248970053546194696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440164887428214715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5246556761318582503}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6973866118515449857
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,6 +78,7 @@ GameObject:
   - component: {fileID: 6973866118515450104}
   - component: {fileID: 6973866118515450105}
   - component: {fileID: 6973866118515450106}
+  - component: {fileID: 884272017645624400}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -34,7 +96,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -45.171417, y: 14.286816, z: -8.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5246556761318582503}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -142,15 +205,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  acceleration: 100
+  friction: 2
   obstacleAvoidanceDist: 4
-  acceleration: 10
   closeZombies: []
   closeObstacles: []
   scent: {fileID: 0}
-  cohesionStrength: 1
+  cohesionStrength: 1.2
   obstacleAvoidanceStrength: 0.7
-  scentStrength: 1
-  separationStrength: 1.2
+  scentStrength: 3
+  separationStrength: 1.1
   alignmentStrength: 1
 --- !u!114 &6973866118515450105
 MonoBehaviour:
@@ -177,3 +241,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &884272017645624400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973866118515449857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a25f2c2fa241454a86170169a4d3bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  feet: {fileID: 5246556761318582503}

@@ -24,7 +24,7 @@ public class HandGun : Weapon
         Physics.Raycast(new Ray(cameraTrans.position, cameraTrans.forward), out hit);
         if (hit.collider)
         {
-            otherRb = hit.collider.GetComponent<Rigidbody>();
+            otherRb = hit.collider.attachedRigidbody;
             GameObject newParticles = Instantiate(impactParticles);
             newParticles.transform.position = hit.point;
         }

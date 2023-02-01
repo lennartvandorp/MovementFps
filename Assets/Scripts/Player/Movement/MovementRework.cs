@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInput))]
-[RequireComponent(typeof(PlayerSenses))]
+[RequireComponent(typeof(AgentSenses))]
 public class MovementRework : Movement
 {
     Vector3 velocity;
     Vector3 direction;
-    PlayerSenses senses;
+    AgentSenses senses;
 
     [SerializeField] float acceleration;
     [SerializeField] float airAcc;
@@ -18,7 +18,7 @@ public class MovementRework : Movement
 
     private void Start()
     {
-        senses = GetComponent<PlayerSenses>();
+        senses = GetComponent<AgentSenses>();
     }
 
     public override void OnStartOfFrame()

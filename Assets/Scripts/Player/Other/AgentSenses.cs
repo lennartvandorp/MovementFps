@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-public class PlayerSenses : MonoBehaviour
+public class AgentSenses : MonoBehaviour
 {
 
     [SerializeField] Transform feet;
@@ -41,11 +42,18 @@ public class PlayerSenses : MonoBehaviour
             float dot = Vector3.Dot(transform.up, hit.normal);
             if (hit.collider != null && dot > .7f)
             {
+                groundCollider = hit.collider;
                 hitGround = true;
+                return hitGround;
             }
         }
-
-
         return hitGround;
     }
+
+    /// <summary>
+    /// Hitground is run to update this
+    /// </summary>
+    /// <returns></returns>
+    Collider groundCollider;
+    public Collider GroundCollider { get { return groundCollider; } }
 }

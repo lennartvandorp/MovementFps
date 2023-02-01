@@ -5,18 +5,18 @@ using UnityEngine.AI;
 
 namespace EnemyAI
 {
-    [RequireComponent(typeof(NPCData))]
-    [RequireComponent(typeof(NPCGroundMovement))]
+    [RequireComponent(typeof(AgentData))]
+    [RequireComponent(typeof(AgentGroundMovement))]
     public class ZombieFlocking : EnemyMovementLogic
     {
 
-        NPCData data;
-        NPCGroundMovement movement;
-        void Start()
+        AgentData data;
+        AgentGroundMovement movement;
+        override protected void Start()
         {
-            data = GetComponent<NPCData>();
-            movement = GetComponent<NPCGroundMovement>();
-            
+            data = GetComponent<AgentData>();
+            movement = GetComponent<AgentGroundMovement>();
+            base.Start();
         }
 
         public void UpdateDir()
@@ -27,8 +27,8 @@ namespace EnemyAI
             + GoAwayFromZombies() * data.SeparationStrength
             + GoToZombies() * data.AlignmentStrength
             + FollowScent() * data.ScentStrength
-            ) * data.Acceleration;
-            ;
+            ).normalized;
+            
 
             movement.SetDirection(dir);
         }

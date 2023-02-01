@@ -10,13 +10,13 @@ public class ZombieSpawner : MonoBehaviour
     ZombieManager manager;
 
     [SerializeField] float spawnDist;
-    [SerializeField] float zombieAmount;
+    [SerializeField] int zombieAmount;
 
     // Start is called before the first frame update
     void Start()
     {
         manager = GetComponent<ZombieManager>();
-        SpawnInGrid(101);
+        SpawnInGrid(zombieAmount);
     }
 
 

@@ -4,18 +4,23 @@ using UnityEngine;
 
 namespace EnemyAI
 {
-    public class NPCData : MonoBehaviour
+    public class AgentData : MonoBehaviour
     {
-        [Header("Zombie settings")]
+        [Header("Movement settings")]
 
         [SerializeField] float moveSpeed;
         public float MoveSpeed { get { return moveSpeed; } }
 
+        [SerializeField] float acceleration;
+        public float Acceleration { get { return acceleration; } }
+
+        [SerializeField] float friction;
+        public float Friction { get { return friction; } }
+
+        [Header("Flocking settings")]
         [SerializeField] float obstacleAvoidanceDist;
         public float ObstacleAvoidanceDist { get { return obstacleAvoidanceDist; } }
 
-        [SerializeField] float acceleration;
-        public float Acceleration { get { return acceleration; } }
 
         [HideInInspector] public List<Rigidbody> closeZombies;
         [HideInInspector] public List<Collider> closeObstacles;

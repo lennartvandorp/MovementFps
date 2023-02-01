@@ -760,6 +760,9 @@ GameObject:
   - component: {fileID: 4509891502497123548}
   - component: {fileID: 4509891502497123522}
   - component: {fileID: 4509891502497123521}
+  - component: {fileID: 2639614533434478489}
+  - component: {fileID: 6800737248184720009}
+  - component: {fileID: 1923453746666327695}
   m_Layer: 3
   m_Name: MyPlayer
   m_TagString: Untagged
@@ -858,6 +861,57 @@ MonoBehaviour:
   extendedJumpForce: 1000
   extendedJumpDuration: 0
   fallExtraGravity: 0
+--- !u!114 &2639614533434478489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509891502497123551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9871a81744865f4990975703da8238f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 15
+  acceleration: 100
+  friction: 10
+  obstacleAvoidanceDist: 0
+  closeZombies: []
+  closeObstacles: []
+  scent: {fileID: 0}
+  cohesionStrength: 0
+  obstacleAvoidanceStrength: 0
+  scentStrength: 0
+  separationStrength: 0
+  alignmentStrength: 0
+--- !u!114 &6800737248184720009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509891502497123551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff5773ad9ab3d349a4bd23f7700aa60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scentSurvivalTime: 10
+  scentPlacementDistance: 7
+  scent: {fileID: 496028619077477260, guid: 2e2367e82aca42b41a45900691a887e2, type: 3}
+--- !u!114 &1923453746666327695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4509891502497123551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6757fa52140267846a11135a6a98b873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4509891502658968478
 GameObject:
   m_ObjectHideFlags: 0
